@@ -10,20 +10,20 @@ public class Main {
         Set<Integer> list1 = new HashSet<>(Arrays.asList(elements));
         Set<Integer> list2 = new HashSet<>(Arrays.asList(elements2));
 
+
         symmetricSetDifference(list1,list2);
 
     }
-    public static void symmetricSetDifference(Set<Integer> set1, Set<Integer> set2){
-       //Stolen from the internet, was going insane on how to make this. Comments will explain how it is done.
-        Set<Integer> newSet = new HashSet<>(set1);
-        newSet.addAll(set2);
-        System.out.println(newSet);
-        Set<Integer> temp = new HashSet<>(set1);
-        System.out.println(temp);
-        temp.retainAll(set2);
-        System.out.println(temp);
-        newSet.retainAll(temp);
-        System.out.println(newSet);
+    public static Set<Integer> symmetricSetDifference(Set<Integer> set1, Set<Integer> set2){
+        Set<Integer> setIntersect = new HashSet<>(set1);
+        setIntersect.removeAll(set2);
+        set2.removeAll(set1);
+        setIntersect.addAll(set2);
+
+        System.out.println(setIntersect);
+        return setIntersect;
+
+
 
     }
 
